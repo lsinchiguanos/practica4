@@ -4,26 +4,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.practica4.models.Country;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RequestQueue rque;
-    String url = "https://corona.lmao.ninja/v2/countries/Brazil?yesterday&strict&query%20";
+    String url = "https://api.covid19api.com/summary";
+    List<String> data = new ArrayList<String>();
+    ListView lstDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         /* Llamado a la getApiData*/
         getApiData();
+
+        lstDatos = (ListView) findViewById(R.id.lstDatos);
     }
 
     private void getApiData(){
+
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
@@ -49,6 +56,24 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i <= response.length(); i++) {
                                 try {
                                     JSONObject obj = response.getJSONObject(i);
+                                    Log.d("My Degug", "Hola");
+                                    /*Country country = new Country();
+                                    country.setCountry(obj.getString("Country"));
+                                    country.setCountryCode(obj.getString("CountryCode").toString());
+                                    country.setSlug(obj.getString("Slug").toString());
+                                    country.setNewConfirmed(Integer.parseInt(obj.getString("NewConfirmed").toString()));
+                                    country.setTotalConfirmed(Integer.parseInt(obj.getString("TotalConfirmed").toString()));
+                                    country.setNewDeaths(Integer.parseInt(obj.getString("NewDeaths").toString()));
+                                    country.setTotalDeaths(Integer.parseInt(obj.getString("TotalDeaths").toString()));
+                                    country.setNewRecovered(Integer.parseInt(obj.getString("NewRecovered").toString()));
+                                    country.setTotalRecovered(Integer.parseInt(obj.getString("TotalRecovered").toString()));
+                                    country.setDate(obj.getString("Date").toString());
+
+                                    data.add(obj.get("Country").toString());
+
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, data);
+                                    lstDatos.setAdapter(adapter);*/
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

@@ -7,8 +7,11 @@
     android:id="@+id/ltPrincipal"
     android:orientation ="vertical"
     tools:context=".MainActivity">
-
-
+    
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lstDatos"></ListView>
 
 
 </LinearLayout>

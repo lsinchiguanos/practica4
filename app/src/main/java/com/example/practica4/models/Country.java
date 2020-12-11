@@ -1,37 +1,16 @@
 package com.example.practica4.models;
 
 public class Country {
-    private int updated;
     private String country;
-    private CountryInfor countryInfor;
-    private int cases;
-    private int todayCases;
-    private int deaths;
-    private int todayDeaths;
-    private int recovered;
-    private int todayRecovered;
-    private int active;
-    private int critical;
-    private int casesPerOneMillion;
-    private int deathsPerOneMillion;
-    private int tests;
-    private int testsPerOneMillion;
-    private int population;
-    private String continent;
-    private int oneCasePerPeople;
-    private int oneDeathPerPeople;
-    private int oneTestPerPeople;
-    private double activePerOneMillion;
-    private double recoveredPerOneMillion;
-    private double criticalPerOneMillion;
-
-    public int getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(int updated) {
-        this.updated = updated;
-    }
+    private String CountryCode;
+    private String Slug;
+    private int NewConfirmed;
+    private int TotalConfirmed;
+    private int NewDeaths;
+    private int TotalDeaths;
+    private int NewRecovered;
+    private int TotalRecovered;
+    private String Date;
 
     public String getCountry() {
         return country;
@@ -41,171 +20,75 @@ public class Country {
         this.country = country;
     }
 
-    public CountryInfor getCountryInfor() {
-        return countryInfor;
+    public String getCountryCode() {
+        return CountryCode;
     }
 
-    public void setCountryInfor(CountryInfor countryInfor) {
-        this.countryInfor = countryInfor;
+    public void setCountryCode(String countryCode) {
+        CountryCode = countryCode;
     }
 
-    public int getCases() {
-        return cases;
+    public String getSlug() {
+        return Slug;
     }
 
-    public void setCases(int cases) {
-        this.cases = cases;
+    public void setSlug(String slug) {
+        Slug = slug;
     }
 
-    public int getTodayCases() {
-        return todayCases;
+    public int getNewConfirmed() {
+        return NewConfirmed;
     }
 
-    public void setTodayCases(int todayCases) {
-        this.todayCases = todayCases;
+    public void setNewConfirmed(int newConfirmed) {
+        NewConfirmed = newConfirmed;
     }
 
-    public int getDeaths() {
-        return deaths;
+    public int getTotalConfirmed() {
+        return TotalConfirmed;
     }
 
-    public void setDeaths(int deaths) {
-        this.deaths = deaths;
+    public void setTotalConfirmed(int totalConfirmed) {
+        TotalConfirmed = totalConfirmed;
     }
 
-    public int getTodayDeaths() {
-        return todayDeaths;
+    public int getNewDeaths() {
+        return NewDeaths;
     }
 
-    public void setTodayDeaths(int todayDeaths) {
-        this.todayDeaths = todayDeaths;
+    public void setNewDeaths(int newDeaths) {
+        NewDeaths = newDeaths;
     }
 
-    public int getRecovered() {
-        return recovered;
+    public int getTotalDeaths() {
+        return TotalDeaths;
     }
 
-    public void setRecovered(int recovered) {
-        this.recovered = recovered;
+    public void setTotalDeaths(int totalDeaths) {
+        TotalDeaths = totalDeaths;
     }
 
-    public int getTodayRecovered() {
-        return todayRecovered;
+    public int getNewRecovered() {
+        return NewRecovered;
     }
 
-    public void setTodayRecovered(int todayRecovered) {
-        this.todayRecovered = todayRecovered;
+    public void setNewRecovered(int newRecovered) {
+        NewRecovered = newRecovered;
     }
 
-    public int getActive() {
-        return active;
+    public int getTotalRecovered() {
+        return TotalRecovered;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setTotalRecovered(int totalRecovered) {
+        TotalRecovered = totalRecovered;
     }
 
-    public int getCritical() {
-        return critical;
+    public String getDate() {
+        return Date;
     }
 
-    public void setCritical(int critical) {
-        this.critical = critical;
-    }
-
-    public int getCasesPerOneMillion() {
-        return casesPerOneMillion;
-    }
-
-    public void setCasesPerOneMillion(int casesPerOneMillion) {
-        this.casesPerOneMillion = casesPerOneMillion;
-    }
-
-    public int getDeathsPerOneMillion() {
-        return deathsPerOneMillion;
-    }
-
-    public void setDeathsPerOneMillion(int deathsPerOneMillion) {
-        this.deathsPerOneMillion = deathsPerOneMillion;
-    }
-
-    public int getTests() {
-        return tests;
-    }
-
-    public void setTests(int tests) {
-        this.tests = tests;
-    }
-
-    public int getTestsPerOneMillion() {
-        return testsPerOneMillion;
-    }
-
-    public void setTestsPerOneMillion(int testsPerOneMillion) {
-        this.testsPerOneMillion = testsPerOneMillion;
-    }
-
-    public int getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
-
-    public String getContinent() {
-        return continent;
-    }
-
-    public void setContinent(String continent) {
-        this.continent = continent;
-    }
-
-    public int getOneCasePerPeople() {
-        return oneCasePerPeople;
-    }
-
-    public void setOneCasePerPeople(int oneCasePerPeople) {
-        this.oneCasePerPeople = oneCasePerPeople;
-    }
-
-    public int getOneDeathPerPeople() {
-        return oneDeathPerPeople;
-    }
-
-    public void setOneDeathPerPeople(int oneDeathPerPeople) {
-        this.oneDeathPerPeople = oneDeathPerPeople;
-    }
-
-    public int getOneTestPerPeople() {
-        return oneTestPerPeople;
-    }
-
-    public void setOneTestPerPeople(int oneTestPerPeople) {
-        this.oneTestPerPeople = oneTestPerPeople;
-    }
-
-    public double getActivePerOneMillion() {
-        return activePerOneMillion;
-    }
-
-    public void setActivePerOneMillion(double activePerOneMillion) {
-        this.activePerOneMillion = activePerOneMillion;
-    }
-
-    public double getRecoveredPerOneMillion() {
-        return recoveredPerOneMillion;
-    }
-
-    public void setRecoveredPerOneMillion(double recoveredPerOneMillion) {
-        this.recoveredPerOneMillion = recoveredPerOneMillion;
-    }
-
-    public double getCriticalPerOneMillion() {
-        return criticalPerOneMillion;
-    }
-
-    public void setCriticalPerOneMillion(double criticalPerOneMillion) {
-        this.criticalPerOneMillion = criticalPerOneMillion;
+    public void setDate(String date) {
+        Date = date;
     }
 }
