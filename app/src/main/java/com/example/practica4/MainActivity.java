@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     RequestQueue rque;
     String url = "https://api.covid19api.com/summary";
-    List<String> data = new ArrayList<String>();
+    List<String> data;
     ListView lstDatos;
 
     @Override
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
         /* Llamado a la getApiData*/
         getApiData();
-
-        lstDatos = (ListView) findViewById(R.id.lstDatos);
     }
 
     private void getApiData(){
+
+        data = new ArrayList<String>();
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -58,22 +58,21 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject obj = new JSONObject(jsonArray.get(i).toString());
                                 Country country = new Country();
-                                country.setCountry(obj.getString("Country"));
-                                country.setCountryCode(obj.getString("CountryCode").toString());
-                                country.setSlug(obj.getString("Slug").toString());
-                                country.setNewConfirmed(Integer.parseInt(obj.getString("NewConfirmed").toString()));
-                                country.setTotalConfirmed(Integer.parseInt(obj.getString("TotalConfirmed").toString()));
-                                country.setNewDeaths(Integer.parseInt(obj.getString("NewDeaths").toString()));
-                                country.setTotalDeaths(Integer.parseInt(obj.getString("TotalDeaths").toString()));
-                                country.setNewRecovered(Integer.parseInt(obj.getString("NewRecovered").toString()));
-                                country.setTotalRecovered(Integer.parseInt(obj.getString("TotalRecovered").toString()));
-                                country.setDate(obj.getString("Date").toString());
-
+                                country.setCountry(obj.get("Country").toString());
+                                country.setCountryCode(obj.get("CountryCode").toString());
+                                country.setSlug(obj.get("Slug").toString());
+                                country.setNewConfirmed(Integer.parseInt(obj.get("NewConfirmed").toString()));
+                                country.setTotalConfirmed(Integer.parseInt(obj.get("TotalConfirmed").toString()));
+                                country.setNewDeaths(Integer.parseInt(obj.get("NewDeaths").toString()));
+                                country.setTotalDeaths(Integer.parseInt(obj.get("TotalDeaths").toString()));
+                                country.setNewRecovered(Integer.parseInt(obj.get("NewRecovered").toString()));
+                                country.setTotalRecovered(Integer.parseInt(obj.get("TotalRecovered").toString()));
+                                country.setDate(obj.get("Date").toString());
                                 data.add(obj.get("Country").toString());
-
-                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, data);
-                                lstDatos.setAdapter(adapter);
                             }
+                            lstDatos = (ListView)findViewById(R.id.lstDatos);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, data);
+                            lstDatos.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
