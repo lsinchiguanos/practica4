@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     RequestQueue rque;
     String url = "https://api.covid19api.com/summary";
-    List<String> data;
     ListView lstDatos;
 
     @Override
@@ -39,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
         rque = Volley.newRequestQueue(this);
 
         /* Llamado a la getApiData*/
+        lstDatos = (ListView)findViewById(R.id.lstDatos);
+
         getApiData();
     }
 
     private void getApiData(){
 
-        data = new ArrayList<String>();
+        ArrayList<String> data = new ArrayList<>();
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -70,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                 country.setDate(obj.get("Date").toString());
                                 data.add(obj.get("Country").toString());
                             }
-                            lstDatos = (ListView)findViewById(R.id.lstDatos);
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, data);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, data);
                             lstDatos.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
